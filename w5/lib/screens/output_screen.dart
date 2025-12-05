@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w5/theme/constants.dart';
 import 'package:w5/widget/neumorphic_container.dart';
+import 'package:w5/widget/neumorphic_large_button.dart';
 
 class OutputScreen extends StatelessWidget {
   final String bmiResult;
@@ -79,31 +80,13 @@ class OutputScreen extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(20, 10, 20, 30),
-              height: 70.0,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    kNeumorphicAccent,
-                    kNeumorphicAccent.withOpacity(0.8),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(35.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: kNeumorphicAccent.withOpacity(0.3),
-                    offset: const Offset(0, 8),
-                    blurRadius: 20,
-                  ),
-                ],
-              ),
-              child: const Center(
-                child: Text('RE-CALCULATE', style: kLargeButtonTextStyle),
+          NeumorphicLargeButton(
+            onPressed: () => Navigator.pop(context),
+            margin: const EdgeInsets.fromLTRB(20, 10, 20, 30),
+            child: Text(
+              'RE-CALCULATE',
+              style: kLargeButtonTextStyle.copyWith(
+                color: kNeumorphicAccent,
               ),
             ),
           ),
