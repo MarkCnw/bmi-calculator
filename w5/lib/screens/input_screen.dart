@@ -23,23 +23,53 @@ class _InputScreenState extends State<InputScreen> {
   int weight = 60;
   int age = 20;
 
+  // ... ส่วนบนของไฟล์เหมือนเดิม ...
+
   void calculateAndNavigate() {
+    // คำนวณ BMI
     double bmi = weight / pow(height / 100, 2);
     String bmiResult = bmi.toStringAsFixed(1);
+
     String resultText;
     String interpretation;
+    Color resultColor;
 
-    if (bmi >= 25) {
-      resultText = 'Overweight';
+    // Logic 8 ระดับ
+    if (bmi >= 40) {
+      resultText = 'Obese Class III'; // อ้วนระดับสูงสุด
       interpretation =
-          'You have a higher than normal body weight. Try to exercise more.';
-    } else if (bmi > 18.5) {
-      resultText = 'Normal';
+          'Very high health risk. Immediate medical advice recommended.';
+      resultColor = kNeumorphicRed;
+    } else if (bmi >= 35) {
+      resultText = 'Obese Class II'; // อ้วนระดับ 2
+      interpretation =
+          'High health risk. Please consult a doctor for advice.';
+      resultColor = const Color(0xFFD32F2F); // แดงเข้ม
+    } else if (bmi >= 30) {
+      resultText = 'Obese Class I'; // อ้วนระดับ 1
+      interpretation =
+          'Moderate health risk. Consider a diet plan and exercise.';
+      resultColor = kNeumorphicOrange;
+    } else if (bmi >= 25) {
+      resultText = 'Overweight'; // น้ำหนักเกิน
+      interpretation = 'Slightly above normal. Try to exercise more.';
+      resultColor = const Color(0xFFFFB74D); // ส้มอ่อน
+    } else if (bmi >= 18.5) {
+      resultText = 'Normal'; // ปกติ
       interpretation = 'You have a normal body weight. Good job!';
+      resultColor = kNeumorphicGreen;
+    } else if (bmi >= 17) {
+      resultText = 'Mild Thinness'; // ผอมระดับบางเบา
+      interpretation = 'Slightly underweight. You can eat a bit more.';
+      resultColor = const Color(0xFFAED581); // เขียวอ่อน
+    } else if (bmi >= 16) {
+      resultText = 'Moderate Thinness'; // ผอมระดับปานกลาง
+      interpretation = 'Underweight. Consider consulting a nutritionist.';
+      resultColor = const Color(0xFFFFD54F); // เหลือง
     } else {
-      resultText = 'Underweight';
-      interpretation =
-          'You have a lower than normal body weight. You can eat a bit more.';
+      resultText = 'Severe Thinness'; // ผอมระดับรุนแรง
+      interpretation = 'Very low body weight. Please see a doctor.';
+      resultColor = kNeumorphicRed;
     }
 
     Navigator.push(
@@ -49,16 +79,22 @@ class _InputScreenState extends State<InputScreen> {
           bmiResult: bmiResult,
           resultText: resultText,
           interpretation: interpretation,
+          resultColor: resultColor, // ส่งสีไปด้วย
         ),
       ),
     );
   }
 
+  // ... ส่วนล่างของไฟล์เหมือนเดิม ...
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BMI CALCULATOR'),
+        title: const Text(
+          'BMI CALCULATOR',
+          style: TextStyle(fontSize: 25),
+        ),
         centerTitle: true,
       ),
       body: SafeArea(

@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:w5/theme/constants.dart';
 import 'package:w5/widget/neumorphic_container.dart';
-import 'package:w5/widget/neumorphic_large_button.dart'; // เพิ่ม import นี้
+import 'package:w5/widget/neumorphic_large_button.dart';
 
 class OutputScreen extends StatelessWidget {
   final String bmiResult;
   final String resultText;
   final String interpretation;
+  final Color resultColor; // 1. เพิ่มตัวแปรรับค่าสี
 
   const OutputScreen({
     super.key,
     required this.bmiResult,
     required this.resultText,
     required this.interpretation,
+    required this.resultColor, // 2. เพิ่มใน Constructor
   });
 
-  Color _getResultColor() {
-    if (resultText == 'Normal') return kNeumorphicGreen;
-    if (resultText == 'Overweight') return kNeumorphicOrange;
-    return kNeumorphicRed;
-  }
+  // 3. ลบฟังก์ชัน _getResultColor() ออก เพราะเราจะไม่ใช้แล้ว
 
   @override
   Widget build(BuildContext context) {
@@ -56,18 +54,19 @@ class OutputScreen extends StatelessWidget {
                       vertical: 12,
                     ),
                     decoration: BoxDecoration(
-                      color: _getResultColor().withOpacity(0.1),
+                      color: resultColor.withOpacity(0.1), // 4. ใช้ resultColor
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
-                        color: _getResultColor(),
+                        color: resultColor, // 5. ใช้ resultColor
                         width: 2,
                       ),
                     ),
                     child: Text(
                       resultText.toUpperCase(),
                       style: kResultTextStyle.copyWith(
-                        color: _getResultColor(),
+                        color: resultColor, // 6. ใช้ resultColor
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Text(bmiResult, style: kBMITextStyle),
@@ -83,7 +82,6 @@ class OutputScreen extends StatelessWidget {
               ),
             ),
           ),
-          // แทนที่ปุ่ม RE-CALCULATE เป็น Neumorphic style
           NeumorphicLargeButton(
             text: 'RE-CALCULATE',
             onPressed: () => Navigator.pop(context),
