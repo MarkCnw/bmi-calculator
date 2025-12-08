@@ -1,8 +1,8 @@
+// Neumorphic Colors - ปรับสีเงาให้เข้มขึ้น
 import 'package:flutter/material.dart';
 
-// Neumorphic Colors
 const kNeumorphicBackground = Color(0xFFE0E5EC);
-const kNeumorphicShadowDark = Color(0xFFA3B1C6);
+const kNeumorphicShadowDark = Color(0xFF9BA8B7); // เข้มขึ้นจาก 0xFFA3B1C6
 const kNeumorphicShadowLight = Color(0xFFFFFFFF);
 const kNeumorphicAccent = Color(0xFF6C63FF);
 const kNeumorphicTextPrimary = Color(0xFF2C3E50);

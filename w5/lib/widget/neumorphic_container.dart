@@ -40,36 +40,36 @@ class NeumorphicContainer extends StatelessWidget {
           boxShadow: isFlat
               ? []
               : isPressed
-                  ? [
-                      // Inner shadow effect
-                      BoxShadow(
-                        color: kNeumorphicShadowDark.withOpacity(0.5),
-                        offset: const Offset(4, 4),
-                        blurRadius: 8,
-                        spreadRadius: 0,
-                      ),
-                      BoxShadow(
-                        color: kNeumorphicShadowLight.withOpacity(0.8),
-                        offset: const Offset(-4, -4),
-                        blurRadius: 8,
-                        spreadRadius: 0,
-                      ),
-                    ]
-                  : [
-                      // Raised effect
-                      BoxShadow(
-                        color: kNeumorphicShadowDark.withOpacity(0.5),
-                        offset: const Offset(8, 8),
-                        blurRadius: 15,
-                        spreadRadius: 1,
-                      ),
-                      BoxShadow(
-                        color: kNeumorphicShadowLight.withOpacity(0.9),
-                        offset: const Offset(-8, -8),
-                        blurRadius: 15,
-                        spreadRadius: 1,
-                      ),
-                    ],
+              ? [
+                  // Pressed state - inner shadow effect (ชัดขึ้น)
+                  BoxShadow(
+                    color: kNeumorphicShadowDark.withOpacity(0.7),
+                    offset: const Offset(6, 6),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                  BoxShadow(
+                    color: kNeumorphicShadowLight.withOpacity(1.0),
+                    offset: const Offset(-6, -6),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                ]
+              : [
+                  // Normal state - raised effect (ชัดขึ้นมาก)
+                  BoxShadow(
+                    color: kNeumorphicShadowDark.withOpacity(0.7),
+                    offset: const Offset(10, 10),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                  ),
+                  BoxShadow(
+                    color: kNeumorphicShadowLight.withOpacity(1.0),
+                    offset: const Offset(-10, -10),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                  ),
+                ],
         ),
         child: child,
       ),

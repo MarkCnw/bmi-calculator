@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:w5/theme/constants.dart';
 import 'package:w5/widget/neumorphic_container.dart';
 import 'package:w5/widget/neumorphic_button.dart';
+import 'package:w5/widget/neumorphic_large_button.dart';
 import 'dart:math';
 
 import 'output_screen.dart';
@@ -97,7 +98,7 @@ class _InputScreenState extends State<InputScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
-                                      Icons.male,
+                                      Icons.face,
                                       size: 64, // ลดจาก 70–80
                                       color: selectedGender == Gender.male
                                           ? kNeumorphicAccent
@@ -142,7 +143,7 @@ class _InputScreenState extends State<InputScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
-                                      Icons.female,
+                                      Icons.face_2,
                                       size: 64,
                                       color:
                                           selectedGender == Gender.female
@@ -362,35 +363,9 @@ class _InputScreenState extends State<InputScreen> {
                     const SizedBox(height: 20),
 
                     // Calculate Button
-                    GestureDetector(
-                      onTap: calculateAndNavigate,
-                      child: Container(
-                        height: 70.0,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              kNeumorphicAccent,
-                              kNeumorphicAccent.withOpacity(0.8),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(35.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: kNeumorphicAccent.withOpacity(0.3),
-                              offset: const Offset(0, 8),
-                              blurRadius: 20,
-                            ),
-                          ],
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'CALCULATE',
-                            style: kLargeButtonTextStyle,
-                          ),
-                        ),
-                      ),
+                    NeumorphicLargeButton(
+                      text: 'CALCULATE',
+                      onPressed: calculateAndNavigate,
                     ),
                   ],
                 ),

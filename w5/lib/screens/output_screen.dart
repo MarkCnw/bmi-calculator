@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w5/theme/constants.dart';
 import 'package:w5/widget/neumorphic_container.dart';
+import 'package:w5/widget/neumorphic_large_button.dart'; // เพิ่ม import นี้
 
 class OutputScreen extends StatelessWidget {
   final String bmiResult;
@@ -41,7 +42,10 @@ class OutputScreen extends StatelessWidget {
           Expanded(
             flex: 5,
             child: NeumorphicContainer(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,33 +83,11 @@ class OutputScreen extends StatelessWidget {
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(20, 10, 20, 30),
-              height: 70.0,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    kNeumorphicAccent,
-                    kNeumorphicAccent.withOpacity(0.8),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.circular(35.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: kNeumorphicAccent.withOpacity(0.3),
-                    offset: const Offset(0, 8),
-                    blurRadius: 20,
-                  ),
-                ],
-              ),
-              child: const Center(
-                child: Text('RE-CALCULATE', style: kLargeButtonTextStyle),
-              ),
-            ),
+          // แทนที่ปุ่ม RE-CALCULATE เป็น Neumorphic style
+          NeumorphicLargeButton(
+            text: 'RE-CALCULATE',
+            onPressed: () => Navigator.pop(context),
+            margin: const EdgeInsets.fromLTRB(20, 10, 20, 30),
           ),
         ],
       ),
